@@ -1,0 +1,10 @@
+#!/bin/bash
+while :; 
+do 
+ip=$(curl -s https://ipvigilante.com/$(curl -s https://ipinfo.io/ip) | jq -jr '.data.ipv4, " ", .data.city_name, " ", .data.country_name');
+timestamp=$(date +%T)
+echo -e "\e[1A\e[K$timestamp $ip"
+
+#echo $timestamp  $ip;
+sleep 30; 
+done
